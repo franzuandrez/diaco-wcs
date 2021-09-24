@@ -21,8 +21,6 @@ Route::get('/', function () {
 });
 
 
-
-
 Route::get('/quejas', 'QuejaController@create')->name('queja.create');
 Route::post('/quejas', 'QuejaController@store')->name('queja.store');
 Route::get('/estadisticas', 'EstadisticasController@index')->name('estadisticas');
@@ -33,4 +31,8 @@ Route::get('/departamentos', 'DepartamentoController@index')->name('departamento
 Route::get('/departamentos/{id}', 'DepartamentoController@edit')->name('departamentos.edit');
 Route::patch('/departamentos/{id}', 'DepartamentoController@update')->name('departamentos.update');
 Route::get('/municipios', 'MunicipioController@index')->name('municipios');
+Route::get('/municipios/create', 'MunicipioController@create')->name('municipios.create');
+Route::post('/municipios', 'MunicipioController@store')->name('municipios.store');
+Route::get('/municipios/{id}', 'MunicipioController@edit')->name('municipios.edit');
+Route::patch('/municipios/{id}', 'MunicipioController@update')->name('municipios.update');
 Route::get('/comercios', 'ComercioController@index')->name('comercios');
