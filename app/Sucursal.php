@@ -8,7 +8,6 @@ class Sucursal extends Model
 {
     //
 
-
     protected $table = 'sucursal';
     protected $fillable = [
         'nombre',
@@ -24,5 +23,11 @@ class Sucursal extends Model
     public function municipio()
     {
         return $this->belongsTo(Municipio::class, 'id_municipio', 'id');
+    }
+
+    public function quejas()
+    {
+
+        return $this->hasMany(Queja::class, 'id_sucursal', 'id');
     }
 }
