@@ -5,10 +5,11 @@
 use App\Queja;
 use Faker\Generator as Faker;
 use Carbon\CarbonInterval;
+
 $factory->define(Queja::class, function (Faker $faker) {
 
-    $fecha_compra = $faker->dateTimeBetween('-3 years');
-    $interval = CarbonInterval::make('1day');
+    $fecha_compra = $faker->dateTimeBetween('-8 months');
+    $interval = CarbonInterval::make('2days');
     return [
         //
         'detalle' => $faker->text,
