@@ -30,5 +30,7 @@ Route::get('/regiones', 'RegionController@index')->name('regiones');
 Route::get('/regiones/{id}', 'RegionController@edit')->name('regiones.edit');
 Route::patch('/regiones/{id}', 'RegionController@update')->name('regiones.update');
 Route::get('/departamentos', 'DepartamentoController@index')->name('departamentos');
+Route::get('/departamentos/{id}', 'DepartamentoController@edit')->name('departamentos.edit');
+Route::patch('/departamentos/{id}', 'DepartamentoController@update')->name('departamentos.update');
 Route::get('/municipios', 'MunicipioController@index')->name('municipios');
 Route::get('/comercios', 'ComercioController@index')->name('comercios');
