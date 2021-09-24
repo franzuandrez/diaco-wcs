@@ -52,7 +52,7 @@
                                     <tbody>
                                     @foreach( $regiones as $region )
                                         <tr>
-                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{$loop->iteration + ($regiones->perPage() * ($regiones->currentPage() -1)  )}}</td>
                                             <td>{{$region->nombre}}</td>
                                             <td>
                                                 <a href="{{route('regiones.edit',$region->id)}}">
@@ -66,7 +66,9 @@
                                     @endforeach
 
                                     </tbody>
+
                                 </table>
+                                {{$regiones->links()}}
                             </div>
                         </div>
                     </div>

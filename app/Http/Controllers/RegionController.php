@@ -17,7 +17,7 @@ class RegionController extends Controller
 
         $query = $request->get('query');
         $regiones = Region::where('nombre', 'LIKE', '%' . $query . '%')
-            ->paginate(10);
+            ->paginate(2);
 
 
         return view('regiones.index', [
