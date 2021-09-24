@@ -35,7 +35,7 @@
                     <div class="col-lg-8 align-self-baseline">
                         <p class="text-white-75 mb-5">
                             Si tiene alguna queja no dudes en decirnolos y no te preocupes, será totalmente anonima</p>
-                        <a class="btn btn-primary btn-xl" href="#about">Quejarme</a>
+                        <a class="btn btn-primary btn-xl" href="{{route('queja.create')}}">Quejarme</a>
                     </div>
                 </div>
             </div>
