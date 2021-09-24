@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Comercio;
 use App\Departamento;
+use App\Http\Requests\QuejaStoreRequest;
 use App\Municipio;
+use App\Queja;
 use App\Region;
 use App\Sucursal;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class QuejaController extends Controller
@@ -49,6 +52,36 @@ class QuejaController extends Controller
 
             )
         );
+
+    }
+
+    public function store(QuejaStoreRequest $request)
+    {
+
+
+        $sucursal = Sucursal::find($request->get('id_sucursal'));
+
+        if (!$sucursal) {
+            return redirect()->back()->withErrors(['Sucursal no encotrada']);
+        }
+
+        $queja = new Queja();
+        $queja->detalle = $request->get('detalle');
+        $queja->fecha_hora_ingreso = Carbon::now();
+        $queja->fecha_compra = Carbon::now();
+        $queja->fecha_compra = Carbon::now();
+        $queja->no_factura = Carbon::now()->toString();
+        $queja->id_sucursal = $request->get('id_sucursal');
+        $queja->save();
+
+
+        return redirect()
+            ->to('quejas')
+            ->with(
+                'success',
+                '¡Su queja ha sido guardada!'
+            );
+
 
     }
 }

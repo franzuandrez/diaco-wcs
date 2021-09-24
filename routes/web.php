@@ -24,4 +24,5 @@ Route::get('/', function () {
 
 
 Route::get('/quejas', 'QuejaController@create')->name('queja.create');
+Route::post('/quejas', 'QuejaController@store')->name('queja.store');
 Route::get('/estadisticas', 'QuejaController@create')->name('estadisticas');

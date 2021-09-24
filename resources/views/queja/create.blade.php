@@ -22,27 +22,39 @@
     </nav>
 @endsection
 
+
 @section('content')
+
 
     <header class="masthead">
         <div class="container px-6 px-lg-8 h-100">
             <div class="row gx-4 gx-lg-2 h-75 align-items-center justify-content-center ">
+                @if(\Illuminate\Support\Facades\Session::get('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ \Illuminate\Support\Facades\Session::get('success')}}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
 
                 @if($id_comercio && !$sucursales->isEmpty())
                     <div class="col-lg-8 equel-grid">
                         <div class="grid">
-                            <p class="grid-header">Sample Elements</p>
+                            <p class="grid-header">{{$comercio == null ? '':$comercio->nombre}}</p>
                             <div class="grid-body">
                                 <div class="item-wrapper">
-                                    <form >
+                                    <form method="POST" action="{{route('queja.store')}}">
                                         @csrf
                                         <div class="row showcase_row_area">
                                             <div class="form-group">
                                                 <label for="id_region">Región</label>
                                             </div>
                                             <div class="col-md-12 showcase_content_area">
-                                                <select class="custom-select"
+                                                <select class="custom-select live-search "
                                                         id="id_region"
+                                                        name="id_region"
+
                                                         onchange="cargarDepartamentos(this.value)"
                                                 >
                                                     <option value="" selected>Seleccione Región</option>
@@ -60,6 +72,7 @@
                                                 <select class="custom-select"
                                                         onchange="cargarMunicipios(this.value)"
                                                         id="id_departamento"
+                                                        name="id_departamento"
                                                 >
                                                     <option value="0" selected>Seleccione Departamento</option>
                                                 </select>
@@ -72,6 +85,7 @@
                                             <div class="col-md-12 showcase_content_area">
                                                 <select class="custom-select"
                                                         id="id_municipio"
+                                                        name="id_municipio"
                                                         onchange="cargarSucursales(this.value)"
                                                 >
                                                     <option value="" selected>Seleccione Municipio</option>
@@ -84,6 +98,7 @@
                                                 <div class="col-md-12 showcase_content_area">
                                                     <select class="custom-select"
                                                             id="id_sucursal"
+                                                            name="id_sucursal"
                                                             required
                                                     >
                                                         <option value="" selected>Seleccione Sucursal</option>
@@ -104,7 +119,7 @@
                                                 es requerido
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-sm btn-primary">Sign in</button>
+                                        <button type="submit" class="btn btn-sm btn-primary">Guardar</button>
                                     </form>
                                 </div>
                             </div>
