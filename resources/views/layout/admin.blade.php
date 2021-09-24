@@ -88,7 +88,7 @@
             </li>
             <li>
                 <a href="{{url('regiones')}}">
-                    <span class="link-title">Region</span>
+                    <span class="link-title">Regiones</span>
                     <i class="mdi mdi-map link-icon"></i>
                 </a>
             </li>
@@ -115,8 +115,18 @@
         </ul>
 
     </div>
-    @yield('content')
 
+    <div class="page-content-wrapper">
+        @if(\Illuminate\Support\Facades\Session::get('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{ \Illuminate\Support\Facades\Session::get('success')}}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        @yield('content')
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
