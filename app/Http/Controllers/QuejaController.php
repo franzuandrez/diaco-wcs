@@ -32,8 +32,7 @@ class QuejaController extends Controller
 
 
         $comercios = $comercios
-            ->orderBy('nombre', 'asc')
-            ->paginate(20);
+            ->paginate(10);
 
         $regiones = Region::orderBy('nombre', 'asc')->get();
         $departamentos = Departamento::orderBy('nombre', 'asc')->get();
