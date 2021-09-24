@@ -15,4 +15,11 @@ class Comercio extends Model
 
     protected $fillable = ['nombre'];
 
+
+    public function sucursales()
+    {
+
+        return $this->hasMany(Sucursal::class, 'id_comercio', 'id');
+    }
+
 }
