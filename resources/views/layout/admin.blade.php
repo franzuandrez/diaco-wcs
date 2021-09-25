@@ -7,7 +7,7 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('assets/vendors/iconfonts/mdi/css/materialdesignicons.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/css/vendor.addons.css')}}">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- endinject -->
     <!-- vendor css for this page -->
     <!-- End vendor css for this page -->
@@ -20,6 +20,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet"/>
 
     <link rel="shortcut icon" href="{{asset('asssets/images/favicon.ico')}}"/>
+
 </head>
 <body class="header-fixed">
 <nav class="t-header">
