@@ -68,7 +68,6 @@ class QuejaController extends Controller
         $queja->detalle = $request->get('detalle');
         $queja->fecha_hora_ingreso = Carbon::now();
         $queja->fecha_compra = Carbon::now();
-        $queja->fecha_compra = Carbon::now();
         $queja->no_factura = Carbon::now()->toString();
         $queja->id_sucursal = $request->get('id_sucursal');
         $queja->save();
@@ -78,7 +77,7 @@ class QuejaController extends Controller
             ->to('quejas')
             ->with(
                 'success',
-                '¡Su queja ha sido guardada!'
+                '¡Su queja ha sido tomada en cuenta!'
             );
 
 
