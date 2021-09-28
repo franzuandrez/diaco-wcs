@@ -36,6 +36,8 @@ Route::post('/municipios', 'MunicipioController@store')->name('municipios.store'
 Route::get('/municipios/{id}', 'MunicipioController@edit')->name('municipios.edit');
 Route::patch('/municipios/{id}', 'MunicipioController@update')->name('municipios.update');
 Route::get('/comercios', 'ComercioController@index')->name('comercios');
+Route::get('/comercios/create', 'ComercioController@create')->name('comercios.create');
+Route::post('/comercios', 'ComercioController@store')->name('comercios.store');
 Route::get('/comercios/{id}', 'ComercioController@edit')->name('comercios.edit');
 Route::patch('/comercios/{id}', 'ComercioController@update')->name('comercios.update');
 Route::get('/comercios/{id}/sucursal', 'SucursalController@create')->name('sucursales.create');

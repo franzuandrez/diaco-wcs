@@ -29,6 +29,27 @@ class ComercioController extends Controller
     }
 
 
+    public function create()
+    {
+
+
+        return view('comercios.create');
+    }
+
+    public function store(Request $request)
+    {
+
+        $comercio = new Comercio();
+        $comercio->nombre = $request->get('nombre');
+        $comercio->save();
+
+
+        return redirect()
+            ->route('comercios.edit', $comercio->id)
+            ->with('success', 'Guardado correctamente');
+
+    }
+
     public function edit($id)
     {
 
@@ -46,8 +67,6 @@ class ComercioController extends Controller
             ->paginate(10);
 
 
-
-
         return view('comercios.edit', [
             'comercio' => $comercio,
             'sucursales' => $sucursales,
@@ -59,6 +78,14 @@ class ComercioController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $comercio = Comercio::findOrFail($id);
+        $comercio->nombre = $request->get('nombre');
+        $comercio->save();
+
+        return redirect()
+            ->route('comercios.edit', $comercio->id)
+            ->with('success', 'Guardado correctamente');
 
     }
 
