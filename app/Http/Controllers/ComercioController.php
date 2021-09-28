@@ -45,16 +45,13 @@ class ComercioController extends Controller
             ->where('id_comercio', $id)
             ->paginate(10);
 
-        $regiones = Region::all();
-        $departamentos = Departamento::all();
-        $municipios = Municipio::all();
+
 
 
         return view('comercios.edit', [
             'comercio' => $comercio,
             'sucursales' => $sucursales,
-            'regiones' => $regiones,
-            'departamentos'=>$departamentos
+
         ]);
 
     }

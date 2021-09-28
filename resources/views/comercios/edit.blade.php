@@ -64,15 +64,25 @@
                 <div class="grid">
                     <p class="grid-header">Listado de Sucursales</p>
                     <div class="item-wrapper">
+                        <div class="demo-wrapper">
+                            <a href="{{route('sucursales.create',$comercio->id)}}">
+                                <div class="btn btn-success has-icon">
+                                    <i class="mdi mdi-plus-box"></i>Nueva
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="item-wrapper">
                         <div class="table-responsive">
-                            <table class="table info-table">
-                                <thead>
+                            <table class="table info-table table-hover  table-sm">
+                                <thead class="thead-dark">
                                 <tr>
-                                    <th>#</th>
-                                    <th>Sucursal</th>
-                                    <th>Municipio</th>
-                                    <th>Departamento</th>
-                                    <th>Region</th>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Sucursal</th>
+                                    <th scope="col">Municipio</th>
+                                    <th scope="col">Departamento</th>
+                                    <th scope="col">Region</th>
                                     <th></th>
                                 </tr>
                                 </thead>

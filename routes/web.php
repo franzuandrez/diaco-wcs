@@ -38,4 +38,6 @@ Route::patch('/municipios/{id}', 'MunicipioController@update')->name('municipios
 Route::get('/comercios', 'ComercioController@index')->name('comercios');
 Route::get('/comercios/{id}', 'ComercioController@edit')->name('comercios.edit');
 Route::patch('/comercios/{id}', 'ComercioController@update')->name('comercios.update');
+Route::get('/comercios/{id}/sucursal', 'SucursalController@create')->name('sucursales.create');
+Route::post('sucursales', 'SucursalController@store')->name('sucursales.store');
 Route::delete('/sucursales/{id}', 'SucursalController@destroy')->name('sucursales.destroy');
