@@ -52,18 +52,7 @@
                                 <i class="grid-icon mdi mdi-jira mdi-2x"></i>
                                 <span class="grid-tittle">Jira</span>
                             </a>
-                            <a class="dropdown-grid">
-                                <i class="grid-icon mdi mdi-trello mdi-2x"></i>
-                                <span class="grid-tittle">Trello</span>
-                            </a>
-                            <a class="dropdown-grid">
-                                <i class="grid-icon mdi mdi-artstation mdi-2x"></i>
-                                <span class="grid-tittle">Artstation</span>
-                            </a>
-                            <a class="dropdown-grid">
-                                <i class="grid-icon mdi mdi-bitbucket mdi-2x"></i>
-                                <span class="grid-tittle">Bitbucket</span>
-                            </a>
+
                         </div>
                         <div class="dropdown-footer">
                             <a href="#">View All</a>
@@ -86,6 +75,26 @@
                     <span class="link-title">Estadisticas</span>
                     <i class="mdi mdi-gauge link-icon"></i>
                 </a>
+            </li>
+            <li>
+                <a href="#ui-elements" data-toggle="collapse" aria-expanded="false">
+                    <span class="link-title">Estadisticas</span>
+                    <i class="mdi mdi-gauge link-icon"></i>
+                </a>
+                <ul class="collapse navigation-submenu" id="ui-elements">
+                    <li>
+                        <a>Region</a>
+                    </li>
+                    <li>
+                        <a>Departamento</a>
+                    </li>
+                    <li>
+                        <a>Municipio</a>
+                    </li>
+                    <li>
+                        <a>Comercios</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="{{url('regiones')}}">
