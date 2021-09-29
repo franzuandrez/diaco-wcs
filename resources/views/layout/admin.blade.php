@@ -18,15 +18,14 @@
     <link rel="stylesheet" href="{{asset('assets/css/demo_1/style.css')}}">
     <!-- Layout style -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet"/>
-
     <link rel="shortcut icon" href="{{asset('asssets/images/favicon.ico')}}"/>
 
 </head>
 <body class="">
 <nav class="t-header">
     <div class="t-header-brand-wrapper">
-        <a href="index.html">
-            <img class="logo" src="{{asset('assets/images/logo.svg')}}" alt="">
+        <a href="{{url('/estadisticas')}}">
+            <img class="logo" src="{{asset('assets/images/logo.svg')}}" alt="" style="max-width: 80%">
             <img class="logo-mini" src="{{asset('assets/images/logo_mini.svg')}}" alt="">
         </a>
     </div>
@@ -42,18 +41,26 @@
                     </a>
                     <div class="dropdown-menu navbar-dropdown dropdown-menu-right" aria-labelledby="appsDropdown">
                         <div class="dropdown-header">
-                            <h6 class="dropdown-title">Apps</h6>
-                            <p class="dropdown-title-text mt-2">Authentication required for 3 apps</p>
+                            <h6 class="dropdown-title">  {{ Auth::user()->name }}</h6>
+                            <p class="dropdown-title-text mt-2">
+                                Sistema de control de quejas
+                            </p>
                         </div>
                         <div class="dropdown-body border-top pt-0">
-                            <a class="dropdown-grid">
-                                <i class="grid-icon mdi mdi-jira mdi-2x"></i>
-                                <span class="grid-tittle">Jira</span>
-                            </a>
+                            <a class="dropdown-grid"
+                               href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
 
+                                <i class="grid-icon mdi mdi-jira mdi-2x"></i>
+                                <span class="grid-tittle">Logout</span>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
                         <div class="dropdown-footer">
-                            <a href="#">View All</a>
+
                         </div>
                     </div>
                 </li>
