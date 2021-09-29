@@ -13,7 +13,7 @@ $factory->define(Queja::class, function (Faker $faker) {
     return [
         //
         'detalle' => $faker->text,
-        'fecha_hora_ingreso' => $fecha_compra->add($interval),
+        'fecha_hora_ingreso' => $fecha_compra->sub($interval),
         'fecha_compra' => $fecha_compra->format('Y-m-d'),
         'no_factura' => $faker->text(10),
 
