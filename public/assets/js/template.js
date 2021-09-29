@@ -82,4 +82,3 @@ function purchaseBanner() {
   }
 }
 
-purchaseBanner();

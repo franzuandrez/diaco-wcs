@@ -22,7 +22,7 @@
     <link rel="shortcut icon" href="{{asset('asssets/images/favicon.ico')}}"/>
 
 </head>
-<body class="header-fixed">
+<body class="">
 <nav class="t-header">
     <div class="t-header-brand-wrapper">
         <a href="index.html">
@@ -35,9 +35,7 @@
             <button class="t-header-toggler t-header-mobile-toggler d-block d-lg-none">
                 <i class="mdi mdi-menu"></i>
             </button>
-
             <ul class="nav ml-auto">
-
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="appsDropdown" data-toggle="dropdown" aria-expanded="false">
                         <i class="mdi mdi-apps mdi-1x"></i>
@@ -77,23 +75,15 @@
                 </a>
             </li>
             <li>
-                <a href="#ui-elements" data-toggle="collapse" aria-expanded="false">
-                    <span class="link-title">Estadisticas</span>
-                    <i class="mdi mdi-gauge link-icon"></i>
-                </a>
+
                 <ul class="collapse navigation-submenu" id="ui-elements">
                     <li>
-                        <a>Region</a>
+                        <a href="{{url('estadisticas')}}">Anuales</a>
                     </li>
                     <li>
-                        <a>Departamento</a>
+                        <a href="{{url('estadisticas/quejas')}}">Quejas</a>
                     </li>
-                    <li>
-                        <a>Municipio</a>
-                    </li>
-                    <li>
-                        <a>Comercios</a>
-                    </li>
+
                 </ul>
             </li>
             <li>
@@ -126,7 +116,7 @@
 
     </div>
 
-    <div class="page-content-wrapper">
+    <div class="page-content-wrapper" style="margin-top: 0">
         @if(\Illuminate\Support\Facades\Session::get('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>{{ \Illuminate\Support\Facades\Session::get('success')}}</strong>

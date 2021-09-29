@@ -284,18 +284,3 @@
   }
 }
 
-.purchase-banner-active {
-  &.header-fixed {
-    .t-header {
-      top: $purchase-banner-height;
-    }
-  }
-
-  &.docs-body {
-    padding-top: $purchase-banner-height;
-  }
-
-  .page-body {
-    top: $purchase-banner-height;
-  }
-}

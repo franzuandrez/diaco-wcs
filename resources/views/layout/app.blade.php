@@ -17,10 +17,10 @@
     <!-- Layout style -->
     <link rel="stylesheet" href="{{asset('assets/css/demo_1/style.css')}}">
     <!-- Layout style -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
-    <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
-
-    <link rel="shortcut icon" href="{{asset('asssets/images/favicon.ico')}}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet"/>
+    <link href="{{asset('css/styles.css')}}" rel="stylesheet"/>
+    @stack('css')
+    <link rel="shortcut icon" href="{{asset('asssets/images/favicon.ico')}}"/>
 </head>
 <body class="header-fixed">
 

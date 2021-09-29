@@ -7,6 +7,8 @@ use App\Departamento;
 use App\Municipio;
 use App\Queja;
 use App\Region;
+use App\Sucursal;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EstadisticasController extends Controller
@@ -14,7 +16,13 @@ class EstadisticasController extends Controller
     //
 
 
-    public function index(Request $request)
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+    }
+
+    public function index()
     {
 
 
@@ -56,7 +64,6 @@ class EstadisticasController extends Controller
             ->get();
 
 
-
         return view('estadisticas.index',
             [
                 'quejas_anuales_meses' => $quejas_anuales->keys(),
@@ -70,6 +77,80 @@ class EstadisticasController extends Controller
             ]);
     }
 
+
+    public function quejas(Request $request)
+    {
+
+        $start_date = $request->get('start_date') == null ? Carbon::now()->format('d/m/Y') : $request->get('start_date');
+        $end_date = $request->get('end_date') == null ? Carbon::now()->format('d/m/Y') : $request->get('end_date');
+
+        $id_region = $request->get('id_region') == null ? '' : $request->get('id_region');
+        $id_departamento = $request->get('id_departamento') == null ? '' : $request->get('id_departamento');
+        $id_municipio = $request->get('id_municipio') == null ? '' : $request->get('id_municipio');
+        $id_sucursal = $request->get('id_sucursal') == null ? '' : $request->get('id_sucursal');
+        $id_comercio = $request->get('id_comercio') == null ? '' : $request->get('id_comercio');
+        $regiones = Region::all();
+        $departamentos = Departamento::all();
+        $municipios = Municipio::all();
+        $sucursales = Sucursal::all();
+        $comercios = Comercio::all();
+        $sucursal = Sucursal::find($id_sucursal);
+
+        $quejas = Queja::select(
+            'quejas.detalle',
+            'quejas.fecha_hora_ingreso',
+            'sucursal.nombre as sucursal',
+            'comercio.nombre as comercio',
+            'municipio.nombre as municipio',
+            'departamento.nombre as departamento',
+            'region.nombre as region'
+        )
+            ->orderBy('fecha_compra', 'desc')
+            ->join('sucursal', 'sucursal.id', '=', 'quejas.id_sucursal')
+            ->join('comercio', 'comercio.id', '=', 'sucursal.id_comercio')
+            ->join('municipio', 'municipio.id', '=', 'sucursal.id_municipio')
+            ->join('departamento', 'departamento.id', '=', 'municipio.id_departamento')
+            ->join('region', 'region.id', '=', 'departamento.id_region');
+
+        if ($id_region) {
+            $quejas = $quejas->where('region.id', $id_region);
+        }
+        if ($id_departamento) {
+            $quejas = $quejas->where('departamento.id', $id_departamento);
+        }
+        if ($id_municipio) {
+            $quejas = $quejas->where('municipio.id', $id_municipio);
+        }
+        if ($id_sucursal) {
+            $quejas = $quejas->where('sucursal.id', $id_sucursal);
+        }
+        if ($id_comercio) {
+            $quejas = $quejas->where('comercio.id', $id_comercio);
+        }
+        $quejas = $quejas
+            ->orderBy('fecha_hora_ingreso', 'desc')
+            ->paginate(10);
+
+
+        return view('estadisticas.quejas', [
+            'quejas' => $quejas,
+            'start_date' => $start_date,
+            'end_date' => $end_date,
+            'id_region' => $id_region,
+            'id_departamento' => $id_departamento,
+            'id_municipio' => $id_municipio,
+            'id_sucursal' => $id_sucursal,
+            'id_comercio' => $id_comercio,
+            'regiones' => $regiones,
+            'departamentos' => $departamentos,
+            'municipios' => $municipios,
+            'sucursales' => $sucursales,
+            'comercios' => $comercios,
+            'sucursal' => $sucursal,
+        ]);
+
+
+    }
 
     private function get_quejas_por_region()
     {

@@ -14,7 +14,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
                     <li class="nav-item"><a class="nav-link" href="{{route('queja.create')}}">Quejas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Estadisticas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('estadisticas')}}">Estadisticas</a></li>
 
                 </ul>
             </div>
@@ -26,19 +26,19 @@
 
     <header class="masthead">
 
-            <div class="container px-4 px-lg-5 h-100">
-                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-                    <div class="col-lg-8 align-self-end">
-                        <h1 class="text-white font-weight-bold">¿Tienes alguna queja?</h1>
-                        <hr class="divider"/>
-                    </div>
-                    <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 mb-5">
-                            Si tiene alguna queja no dudes en decirnolos y no te preocupes, será totalmente anonima</p>
-                        <a class="btn btn-primary btn-xl" href="{{route('queja.create')}}">Quejarme</a>
-                    </div>
+        <div class="container px-4 px-lg-5 h-100">
+            <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-8 align-self-end">
+                    <h1 class="text-white font-weight-bold">¿Tienes alguna queja?</h1>
+                    <hr class="divider"/>
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 mb-5">
+                        Si tiene alguna queja no dudes en decirnolos y no te preocupes, será totalmente anonima</p>
+                    <a class="btn btn-primary btn-xl" href="{{route('queja.create')}}">Quejarme</a>
                 </div>
             </div>
+        </div>
 
     </header>
 

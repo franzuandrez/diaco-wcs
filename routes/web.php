@@ -24,6 +24,7 @@ Route::get('/', function () {
 Route::get('/quejas', 'QuejaController@create')->name('queja.create');
 Route::post('/quejas', 'QuejaController@store')->name('queja.store');
 Route::get('/estadisticas', 'EstadisticasController@index')->name('estadisticas');
+Route::get('/estadisticas/quejas', 'EstadisticasController@quejas')->name('estadisticas.generales');
 Route::get('/regiones', 'RegionController@index')->name('regiones');
 Route::get('/regiones/{id}', 'RegionController@edit')->name('regiones.edit');
 Route::patch('/regiones/{id}', 'RegionController@update')->name('regiones.update');
@@ -43,3 +44,7 @@ Route::patch('/comercios/{id}', 'ComercioController@update')->name('comercios.up
 Route::get('/comercios/{id}/sucursal', 'SucursalController@create')->name('sucursales.create');
 Route::post('sucursales', 'SucursalController@store')->name('sucursales.store');
 Route::delete('/sucursales/{id}', 'SucursalController@destroy')->name('sucursales.destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
