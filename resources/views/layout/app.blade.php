@@ -21,6 +21,7 @@
     <link href="{{asset('css/styles.css')}}" rel="stylesheet"/>
     @stack('css')
     <link rel="shortcut icon" href="{{asset('asssets/images/favicon.ico')}}"/>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 </head>
 <body class="header-fixed">
 
