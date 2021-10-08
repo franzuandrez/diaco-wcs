@@ -48,14 +48,14 @@
                         </div>
                         <div class="dropdown-body border-top pt-0">
                             <a class="dropdown-grid"
-                               href="https://walter-chen-diaco.herokuapp.com/login"
+                               href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
 
                                 <i class="grid-icon mdi mdi-jira mdi-2x"></i>
                                 <span class="grid-tittle">Logout</span>
                             </a>
-                            <form id="logout-form" action="https://walter-chen-diaco.herokuapp.com/login" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </div>
