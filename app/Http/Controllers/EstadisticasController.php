@@ -81,8 +81,8 @@ class EstadisticasController extends Controller
     public function quejas(Request $request)
     {
 
-        $start_date = $request->get('start_date') == null ? Carbon::now()->format('d/m/Y') : $request->get('start_date');
-        $end_date = $request->get('end_date') == null ? Carbon::now()->format('d/m/Y') : $request->get('end_date');
+        $start_date = $request->get('inicio');
+        $end_date = $request->get('fin');
 
         $id_region = $request->get('id_region') == null ? '' : $request->get('id_region');
         $id_departamento = $request->get('id_departamento') == null ? '' : $request->get('id_departamento');
@@ -127,6 +127,19 @@ class EstadisticasController extends Controller
         if ($id_comercio) {
             $quejas = $quejas->where('comercio.id', $id_comercio);
         }
+
+        if ($start_date && $end_date) {
+
+            $start_date = Carbon::createFromFormat('Y-m-d', $start_date);
+            $end_date = Carbon::createFromFormat('Y-m-d', $end_date);
+            $quejas = $quejas->whereBetween('quejas.fecha_hora_ingreso', [$start_date, $end_date]);
+            $start_date = $start_date->format('Y-m-d');
+            $end_date = $end_date->format('Y-m-d');
+        }
+
+
+
+
         $quejas = $quejas
             ->orderBy('fecha_hora_ingreso', 'desc')
             ->paginate(10);

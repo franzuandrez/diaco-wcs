@@ -42,7 +42,8 @@
                                             @else
                                                 @if($sucursal)
                                                     @if($sucursal->id_comercio == $comercio->id)
-                                                        <option selected value="{{$comercio->id}}">{{$comercio->nombre}}</option>
+                                                        <option selected
+                                                                value="{{$comercio->id}}">{{$comercio->nombre}}</option>
                                                     @else
                                                         <option value="{{$comercio->id}}">{{$comercio->nombre}}</option>
                                                     @endif
@@ -55,8 +56,30 @@
                                 </div>
 
                             </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="inicio">Inicio</label>
+                                    <br>
+                                    <br>
+                                    <input type="date" class="form-control" id="inicio"
+                                           name="inicio"
+                                           value="{{$start_date}}"
+                                    >
+                                </div>
 
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="fin">Fin</label>
+                                    <br>
+                                    <br>
+                                    <input type="date" class="form-control" id="fin"
+                                           name="fin"
+                                           value="{{$end_date}}"
+                                    >
+                                </div>
 
+                            </div>
                         </div>
 
                         <div class="row">
@@ -142,7 +165,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="id_sucursal">Sucursal</label>
                                 </div>
@@ -178,60 +201,80 @@
                                         @endforeach
                                     </select>
                                 </div>
+                            </div>
+                            <div class="col-lg-2" style="padding-top:3%">
+
+
+                                <button type="submit" class="btn btn-inverse-primary">Buscar</button>
+
 
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="item-wrapper">
-                                    <div class="demo-wrapper">
-                                        <button type="submit" class="btn btn-inverse-primary">Buscar</button>
-                                    </div>
+
+                    </form>
+
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <div class="item-wrapper">
+                                <div class="table-responsive">
+                                    <table class="table info-table">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Fecha</th>
+                                            <th>Queja</th>
+                                            <th>Sucursal</th>
+                                            <th>Comercio</th>
+                                            <th>Municipio</th>
+                                            <th>Departamento</th>
+                                            <th>Región</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach( $quejas as $queja )
+                                            <tr>
+                                                <td>{{$loop->iteration + ($quejas->perPage() * ($quejas->currentPage() -1)  )}}</td>
+                                                <td>{{$queja->fecha_hora_ingreso==null?'':$queja->fecha_hora_ingreso->format('h:i:s d/m/Y')}}</td>
+                                                <td>{{mb_substr($queja->detalle,0,13).'...'}}</td>
+                                                <td>{{str_replace("Sucursal","",$queja->sucursal)}}</td>
+                                                <td>{{$queja->comercio}}</td>
+                                                <td>{{$queja->municipio}}</td>
+                                                <td>{{$queja->departamento}}</td>
+                                                <td>{{str_replace("Región","",$queja->region)}}</td>
+                                            </tr>
+                                        @endforeach
+
+                                        </tbody>
+
+                                    </table>
+                                    {{$quejas->appends([
+                                           'id_region'=>$id_region,
+                                           'id_departamento'=>$id_departamento,
+                                           'id_municipio'=>$id_municipio,
+                                           'id_sucursal'=>$id_sucursal,
+                                           'id_comercio'=>$id_comercio
+                                        ])}}
                                 </div>
                             </div>
                         </div>
-                    </form>
-
-                    <div class="item-wrapper">
-                        <div class="table-responsive">
-                            <table class="table info-table">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Fecha</th>
-                                    <th>Queja</th>
-                                    <th>Sucursal</th>
-                                    <th>Comercio</th>
-                                    <th>Municipio</th>
-                                    <th>Departamento</th>
-                                    <th>Región</th>
-
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach( $quejas as $queja )
+                        <div class="col-lg-2">
+                            <div class="table-responsive">
+                                <table class="table info-table">
+                                    <thead>
                                     <tr>
-                                        <td>{{$loop->iteration + ($quejas->perPage() * ($quejas->currentPage() -1)  )}}</td>
-                                        <td>{{$queja->fecha_hora_ingreso==null?'':$queja->fecha_hora_ingreso->format('h:i:s d/m/Y')}}</td>
-                                        <td>{{mb_substr($queja->detalle,0,13).'...'}}</td>
-                                        <td>{{str_replace("Sucursal","",$queja->sucursal)}}</td>
-                                        <td>{{$queja->comercio}}</td>
-                                        <td>{{$queja->municipio}}</td>
-                                        <td>{{$queja->departamento}}</td>
-                                        <td>{{str_replace("Región","",$queja->region)}}</td>
+                                        <td style="font-size: 35px;color:#5654eb ">Total</th>
                                     </tr>
-                                @endforeach
-
-                                </tbody>
-
-                            </table>
-                            {{$quejas->appends([
-                                   'id_region'=>$id_region,
-                                   'id_departamento'=>$id_departamento,
-                                   'id_municipio'=>$id_municipio,
-                                   'id_sucursal'=>$id_sucursal,
-                                   'id_comercio'=>$id_comercio
-                                ])}}
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td style="font-size: 35px">
+                                            {{$quejas->total()}}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
